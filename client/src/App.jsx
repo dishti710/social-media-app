@@ -13,12 +13,12 @@ import Layout from './pages/Layout'
 import {Toaster} from "react-hot-toast"
 
 const App = () => {
-  const user=useUser();
+  const { isLoaded, isSignedIn } = useUser();
   return (
     <>
     <Toaster/>
     <Routes>
-      <Route path='/' element={!user ? <Login/>: <Layout/>}>
+      <Route path='/' element={isSignedIn ? <Layout/>: <Login/>}>
       <Route index element={<Feed/>}/>
       <Route path='messages' element={<Messages/>}/>
       <Route path='messages/:userId' element={<ChatBox/>}/>
