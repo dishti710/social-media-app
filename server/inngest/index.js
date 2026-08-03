@@ -65,8 +65,9 @@ const syncUserDeletion=inngest.createFunction(
 //one mail sent immediately and the other one sent after 24hrs if req not accepted
 
 const sendNewConnectionRequestReminder= inngest.createFunction(
-    { id: "send-new-connection-request-reminder" },
-    { event: "app/connection-request" },
+    { 
+        id: "send-new-connection-request-reminder" ,
+        triggers: {event: "app/connection-request"} },
     async ({ event, step }) => {
     const { connectionId } = event.data;
 
