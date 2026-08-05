@@ -4,10 +4,11 @@ import MenuItems from './MenuItems';
 import { assets, dummyUserData } from "../assets/assets";
 import { CirclePlus, LogOut } from 'lucide-react';
 import {UserButton,useClerk, useUser} from "@clerk/clerk-react"
+import { useSelector } from 'react-redux';
 
 const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
     const navigate=useNavigate();
-    const { user } = useUser();
+    const user = useSelector((state)=>state.user.value);
     const {signOut}=useClerk();
 
   return (
